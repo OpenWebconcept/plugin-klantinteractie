@@ -1,0 +1,142 @@
+# Copyright (C) 2023 Acato
+# This file is distributed under the same license as the Klantinteractie plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Klantinteractie 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/klantinteractie\n"
+"POT-Creation-Date: 2023-12-13T13:24:09+00:00\n"
+"PO-Revision-Date: 2023-12-13 14:25+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.1\n"
+"X-Domain: klantinteractie\n"
+
+#. Plugin Name of the plugin
+#: src/gravityforms/class-gravityforms.php:64
+#: src/gravityforms/class-gravityforms.php:67
+msgid "Klantinteractie"
+msgstr "Klantinteractie"
+
+#. Plugin URI of the plugin
+msgid "https://www.openwebconcept.nl"
+msgstr "https://www.openwebconcept.nl"
+
+#. Description of the plugin
+msgid ""
+"This plugin adds support for a Gravity Forms form to submit data to the "
+"klantinteractie API."
+msgstr ""
+"Deze plugin maakt het mogelijk om data naar de klantinteractie API te sturen "
+"door middel van een Gravity Forms formulier."
+
+#. Author of the plugin
+msgid "Acato"
+msgstr "Acato"
+
+#. Author URI of the plugin
+msgid "https://www.acato.nl"
+msgstr "https://www.acato.nl"
+
+#: src/admin/class-admin.php:87
+msgid "Klantinteractie settings"
+msgstr "Klantinteractie settings"
+
+#: src/admin/class-admin.php:94
+msgid "API Domain"
+msgstr "API Domein"
+
+#: src/admin/class-admin.php:102
+msgid "Client ID"
+msgstr "Client ID"
+
+#: src/admin/class-admin.php:110
+msgid "Client Secret"
+msgstr "Client Secret"
+
+#: src/admin/class-admin.php:133
+msgid "The API Domain is not a valid URL."
+msgstr "Het API Domein is geen geldige URL."
+
+#: src/api/class-klantinteractie-api.php:225
+msgid "No BSN found."
+msgstr "Geen BSN gevonden."
+
+#. translators: %s: field name.
+#: src/api/class-klantinteractie-api.php:322
+msgid "The field (%s) was not found."
+msgstr "Het veld (%s) kon niet worden gevonden."
+
+#: src/api/class-klantinteractie-api.php:337
+#: src/api/class-klantinteractie-api.php:379
+msgid "No user data found."
+msgstr "Geen gebruikersgegevens gevonden."
+
+#. translators: %s: field name.
+#: src/api/class-klantinteractie-api.php:354
+msgid "The field (%s) could not be set."
+msgstr "Het veld (%s) kon niet worden ingesteld."
+
+#. translators: %s: field name.
+#: src/api/class-klantinteractie-api.php:436
+msgid "The field (%s) could not be added."
+msgstr "Het veld (%s) kon niet worden toegevoegd."
+
+#: src/gravityforms/class-gravityforms.php:44
+msgid "Contact preference"
+msgstr "Voorkeurskanaal"
+
+#: src/gravityforms/class-gravityforms.php:47
+msgid "Emailaddress"
+msgstr "Emailadres"
+
+#: src/gravityforms/class-gravityforms.php:50
+msgid "Phone number"
+msgstr "Telefoonnummer"
+
+#: src/gravityforms/class-gravityforms.php:70
+msgid "Enable Klantinteractie for this form."
+msgstr "Activeer Klantinteractie voor dit formulier."
+
+#: src/gravityforms/class-gravityforms.php:73
+msgid "Enable Klantinteractie"
+msgstr "Activeer Klantinteractie"
+
+#: src/gravityforms/class-gravityforms.php:107
+msgid "Klantinteractie mapping"
+msgstr "Klantinteractie koppeling"
+
+#: src/gravityforms/class-gravityforms.php:111
+msgid "Choose klantinteractie fieldname"
+msgstr "Kies klantinteractie veldnaam"
+
+#: src/gravityforms/class-gravityforms.php:215
+msgid "Error"
+msgstr "Fout"
+
+#: src/gravityforms/class-gravityforms.php:216
+msgid ""
+"Your data could not be retrieved. Please try again later or contact you "
+"municipality."
+msgstr ""
+"Uw gegevens konden niet worden opgehaald. Probeer het alstublieft later nog "
+"eens of neem contact op met uw gemeente."
+
+#: templates/form-submission-failed.php:9
+msgid "Something went wrong!"
+msgstr "Er ging iets fout!"
+
+#: templates/form-submission-failed.php:13
+msgid "Let ReadSpeaker webReader read out the text."
+msgstr "Laat de tekst voorlezen met ReadSpeaker webReader"
+
+#: templates/form-submission-failed.php:17
+msgid "Read aloud"
+msgstr "Lees voor"
+
+#: templates/form-submission-failed.php:27
+msgid "Updating your data failed."
+msgstr "Het updaten van uw gegevens is mislukt."
