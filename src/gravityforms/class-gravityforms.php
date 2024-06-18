@@ -160,7 +160,7 @@ class Gravityforms {
 			return $form;
 		}
 
-		if ( '1' !== $form['owc-klantinteractie-enabled'] ) {
+		if ( ! isset( $form['owc-klantinteractie-enabled'] ) || '1' !== $form['owc-klantinteractie-enabled'] ) {
 			return $form;
 		}
 
