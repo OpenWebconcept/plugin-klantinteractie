@@ -105,7 +105,7 @@ class Gravityforms {
 		}
 
 		$form = \GFAPI::get_form( $form_id );
-		if ( '1' !== $form['owc-klantinteractie-enabled'] ) {
+		if ( ! isset( $form['owc-klantinteractie-enabled'] ) || '1' !== $form['owc-klantinteractie-enabled'] ) {
 			return;
 		}
 
@@ -190,7 +190,7 @@ class Gravityforms {
 			return;
 		}
 
-		if ( '1' !== $form['owc-klantinteractie-enabled'] ) {
+		if ( ! isset( $form['owc-klantinteractie-enabled'] ) || '1' !== $form['owc-klantinteractie-enabled'] ) {
 			return;
 		}
 
@@ -222,6 +222,10 @@ class Gravityforms {
 	 * @return array The form.
 	 */
 	public function validate_user( $form ) {
+		if ( ! isset( $form['owc-klantinteractie-enabled'] ) || '1' !== $form['owc-klantinteractie-enabled'] ) {
+			return $form;
+		}
+
 		$user_data = Klantinteractie_API::get_instance()->get_user_data();
 		if ( ! empty( $user_data['results'] ) ) {
 			return $form;
