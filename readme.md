@@ -14,6 +14,14 @@ This plugin requires the Yard | GravityForms DigiD plugin to be installed and ac
 2. `composer require acato/klantinteractie`
 3. Activate the Klantinteractie plugin through the 'Plugins' menu in WordPress.
 
+### Configuration
+
+1. Go to the Klantinteractie settings page in the WordPress admin: Settings > Klantinteractie
+2. Fill in the API domain, client ID and client secret.
+3. In Gravity Forms, create a new form and activate the Klantinteractie under the form's settings.
+4. Add fields to the form and map them to the Klantinteractie fields. You can do so under the field settings > Klantinteractie mapping.
+5. The fields will now be prefilled with the data from the Klantinteractie API when the form is loaded. And the Klantinteractie API will be updated upon form submit.
+
 ## Development
 
 ### Coding Standards
@@ -32,3 +40,9 @@ N.B. the `composer install` command also install a git hook, preventing you from
 ```
 wp i18n make-pot . languages/klantinteractie.pot --exclude="node_modules/,vendor/" --domain="klantinteractie"
 ```
+
+### Functions
+
+For frontend usage this plugin implements the following functions:
+* `klantinteractie_get_klantcontacten( $bsn )`: Retrieve all contactmoments for a given BSN.
+* `klantinteractie_get_berichten( $bsn )`: Retrieve all messages for a given BSN.
