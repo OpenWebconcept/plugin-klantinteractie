@@ -222,6 +222,10 @@ class Gravityforms {
 	 * @return array The form.
 	 */
 	public function validate_user( $form ) {
+		if ( ! class_exists( '\GFAPI' ) ) {
+			return;
+		}
+
 		if ( ! isset( $form['owc-klantinteractie-enabled'] ) || '1' !== $form['owc-klantinteractie-enabled'] ) {
 			return $form;
 		}

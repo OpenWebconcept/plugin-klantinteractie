@@ -30,6 +30,8 @@ define( 'KLANTINTERACTIE_VERSION', '1.0.0' );
 require_once plugin_dir_path( __FILE__ ) . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'class-autoloader.php';
 spl_autoload_register( array( '\Klantinteractie_Plugin\Autoloader', 'autoload' ) );
 
+require_once plugin_dir_path( __FILE__ ) . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'functions.php';
+
 /**
  * Begins execution of the plugin.
  */

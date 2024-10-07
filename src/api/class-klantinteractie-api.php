@@ -122,10 +122,15 @@ class Klantinteractie_API {
 		if ( ! isset( $this->user_data[ $bsn ] ) ) {
 			$this->user_data[ $bsn ] = $this->remote_get( 'api/kic/v1/partijen?externeIdentificaties.partijIdentificator.objectId=' . $bsn );
 
-			// Since there is a caching issue with the embedded objects, we have to fetch the data again.
 			foreach ( $this->user_data[ $bsn ]['results'] as &$result ) {
+				// Since there is a caching issue with the embedded objects, we have to fetch the data again.
 				foreach ( $result['embedded']['verstrekteAdressen'] as &$adres ) {
 					$adres = $this->remote_get( 'api/kic/v1/digitaaladressen/' . $adres['_self']['id'] );
+				}
+
+				// Somehow in the API the voorkeurskanaal is not embedded anymore, so we have to fetch it separately.
+				if ( ! isset( $result['embedded']['voorkeurskanaal'] ) && isset( $result['voorkeurskanaal'] ) ) {
+					$result['embedded']['voorkeurskanaal'] = $this->remote_get( 'api/kic/v1/digitaaladressen/' . $result['voorkeurskanaal'] );
 				}
 			}
 		}
@@ -458,11 +463,34 @@ class Klantinteractie_API {
 	/**
 	 * Get klantcontacten for the given BSN.
 	 *
-	 * @param string $bsn The BSN of the user.
+	 * @param string $bsn Optional: The BSN of the user.
 	 *
 	 * @return array An array containing the klantcontacten.
 	 */
 	public function get_klantcontacten( $bsn = null ) {
+		return $this->get_by_bsn( 'betrokkenenbijklantcontact', $bsn );
+	}
+
+	/**
+	 * Get messagen for the given BSN.
+	 *
+	 * @param string $bsn Optional: The BSN of the user.
+	 *
+	 * @return array An array containing the messages.
+     */
+	public function get_berichten( $bsn = null ) {
+		return $this->get_by_bsn( 'berichten', $bsn );
+	}
+
+	/**
+	 * Helper function to get data by BSN.
+	 *
+	 * @param string $type What type of data to get.
+	 * @param string $bsn Optional: The BSN of the user.
+	 *
+	 * @return array An array containing the data.
+	 */
+	private function get_by_bsn( $type, $bsn = null ) {
 		if ( ! $bsn ) {
 			$bsn = decrypt( resolve( 'session' )->getSegment( 'digid' )->get( 'bsn' ) );
 		}
@@ -477,20 +505,20 @@ class Klantinteractie_API {
 			return [];
 		}
 
-		$klantcontacten = [];
+		$results = [];
 
 		foreach ( $partijen['results'] as $partij ) {
-			$betrokkenen_bij_klantcontact = $this->remote_get( 'api/kic/v1/betrokkenenbijklantcontact?partij=' . $partij['_self']['self'] );
+			$partij_results = $this->remote_get( 'api/kic/v1/' . $type . '?partij=' . untrailingslashit( $this->api_domain ) . $partij['_self']['self'] );
 
-			if ( ! $betrokkenen_bij_klantcontact ) {
+			if ( ! $partij_results ) {
 				continue;
 			}
 
-			foreach ( $betrokkenen_bij_klantcontact['results'] as $betrokkene ) {
-				$klantcontacten[] = $betrokkene;
+			foreach ( $partij_results['results'] as $partij_result ) {
+				$results[] = $partij_result;
 			}
 		}
 
-		return $klantcontacten;
+		return $results;
 	}
 }
