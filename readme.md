@@ -4,7 +4,7 @@ This plugin adds support for a Gravity Forms form to submit data to the klantint
 
 ## Requirements
 
-This plugin requires the Yard | GravityForms DigiD plugin to be installed and activated.
+This plugin requires an DigiD plugin that implements the OWC IDP Userdata package to be installed and activated.
 
 ## Installation
 
