@@ -13,11 +13,16 @@
 		{
 			"type": "git",
 			"url": "git@bitbucket.org:acato/wp-pre-commit-hook.git"
+		},
+		{
+			"type": "vcs",
+			"url": "git@github.com:OpenWebconcept/idp-userdata"
 		}
 	],
     "require": {
         "composer/installers": "~1.0",
-		"firebase/php-jwt": "^6.1"
+		"firebase/php-jwt": "^6.1",
+        "owc/idp-userdata": "^1.0"
     },
     "require-dev": {
         "acato/wp-pre-commit-hook": "*"
