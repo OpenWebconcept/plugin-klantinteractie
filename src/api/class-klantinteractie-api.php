@@ -12,8 +12,7 @@
 namespace Klantinteractie_Plugin\API;
 
 use Firebase\JWT\JWT;
-use function Yard\DigiD\Foundation\Helpers\resolve;
-use function Yard\DigiD\Foundation\Helpers\decrypt;
+use OWC\IdpUserData\DigiDSession;
 
 /**
  * Communicate with the Klantinteractie API.
@@ -111,8 +110,8 @@ class Klantinteractie_API {
 	 */
 	public function get_user_data( $bsn = null ) {
 
-		if ( ! $bsn ) {
-			$bsn = decrypt( resolve( 'session' )->getSegment( 'digid' )->get( 'bsn' ) );
+		if ( ! $bsn && DigiDSession::isLoggedIn() ) {
+			$bsn = DigiDSession::getUserData()->getBsn();
 		}
 
 		if ( ! $bsn ) {
@@ -221,8 +220,8 @@ class Klantinteractie_API {
 	 * @return bool|\WP_Error True if the user data was set, \WP_Error otherwise.
 	 */
 	private function set_user_data( $user_data, $bsn = null ) {
-		if ( ! $bsn ) {
-			$bsn = decrypt( resolve( 'session' )->getSegment( 'digid' )->get( 'bsn' ) );
+		if ( ! $bsn && DigiDSession::isLoggedIn() ) {
+			$bsn = DigiDSession::getUserData()->getBsn();
 		}
 
 		if ( ! $bsn ) {
@@ -477,7 +476,7 @@ class Klantinteractie_API {
 	 * @param string $bsn Optional: The BSN of the user.
 	 *
 	 * @return array An array containing the messages.
-     */
+	 */
 	public function get_berichten( $bsn = null ) {
 		return $this->get_by_bsn( 'berichten', $bsn );
 	}
@@ -491,8 +490,8 @@ class Klantinteractie_API {
 	 * @return array An array containing the data.
 	 */
 	private function get_by_bsn( $type, $bsn = null ) {
-		if ( ! $bsn ) {
-			$bsn = decrypt( resolve( 'session' )->getSegment( 'digid' )->get( 'bsn' ) );
+		if ( ! $bsn && DigiDSession::isLoggedIn() ) {
+			$bsn = DigiDSession::getUserData()->getBsn();
 		}
 
 		if ( ! $bsn ) {
