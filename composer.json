@@ -21,7 +21,7 @@
 	],
     "require": {
         "composer/installers": "~1.0",
-		"firebase/php-jwt": "^6.1",
+		"firebase/php-jwt": "^7.0",
         "owc/idp-userdata": "^1.0"
     },
     "require-dev": {
